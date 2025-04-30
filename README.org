@@ -1,0 +1,43 @@
+* File History Check
+This is a Windows system utility.
+
+The program allows me to monitor some of the function of the Windows FileHistory backup on my computer.
+All the windows computers on my small network use FileHistory to copy user files to a centralized backup host.
+On that host I have several external backup drives that I swap.
+
+** First Version 0.0.1
+This is a proof of concept and prints the modication time of the Config1.xml, Config2.xml, Catalog1.edb and, Catalog2.edb files.
+I just review the modification time manually.
+** Plans
+There is detailed information inside the Config1.xml and Config2.xml files while may help with a better analysis of FileHistory progress.
+
+
+* Requirements
+- Common Lisp - I use [[https://sbcl.org/][SBCL]]. The string to network filepaths for samba may be implementation specific.
+- [[https://github.com/dlowe-net/local-time][local-time]] available thru quicklisp
+
+* How to run
+- Configure  ~/file-history-check-pref.lisp (see below)
+- (ql:quickload :file-history-check)
+- (file-history-check:main)
+
+* Configuration
+
+The file ~/file-history-check-pref.lisp
+
+#+begin_src lisp
+  (in-package #:file-history-check)
+  ## The backup hosts
+  (setf *backup-points*
+	'(
+	  (""  "one-host" "fh") # \\one-host\fh
+	  ("" "one-host" "fh-2") # \\one-host\fh-2
+	 ))
+
+  ## The user locations on a host
+  (setf *backup-users*
+	'(
+	  ("twr" "ZZZAP" "Configuration")
+	  ("twrdev" "ZZZAP" "Configuration")
+	 ))
+#+end_src
