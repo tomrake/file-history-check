@@ -13,8 +13,8 @@ There is detailed information inside the Config1.xml and Config2.xml files while
 
 
 * Requirements
-- Common Lisp - I use [[https://sbcl.org/][SBCL]]. The string to network filepaths for samba may be implementation specific.
-- [[https://github.com/dlowe-net/local-time][local-time]] available thru quicklisp
+- Common Lisp - I use [[https://sbcl.org/][SBCL]]. The string of network filepaths for Samba may be implementation-specific.
+- [[https://github.com/dlowe-net/local-time][local-time]] available through quicklisp
 
 * How to run
 - Configure  ~/file-history-check-pref.lisp (see below)
